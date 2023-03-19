@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  # mqtt clients
+  mqtt-clients:
+    build: ./mqtt-clients/.
+    container_name: mqtt-clients
+    network_mode: "host"
+
+  # tcp clients
+  tcp-clients:
+    build: ./tcp-clients/.
+    container_name: tcp-clients
+    network_mode: "host"
+
+  # udp clients
+  udp-clients:
+    build: ./udp-clients/.
+    container_name: udp-clients
+    network_mode: "host"
