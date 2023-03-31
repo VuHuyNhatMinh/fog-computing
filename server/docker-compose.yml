@@ -1,0 +1,48 @@
+version: '3.8'
+networks:
+  my_network:
+    driver: bridge
+
+services:
+  # Mosquitto broker
+  broker:
+    image: eclipse-mosquitto:latest
+    restart: always
+    volumes:
+      - ./broker/config:/mosquitto/config
+      - ./broker/data:/mosquitto/data
+      - ./broker/log:/mosquitto/log      
+    ports:
+      - 1883:1883
+      - 9001:9001
+    container_name: broker
+    networks:
+      - my_network
+  
+  # Problem: How to start server after broker?
+  # TODO: Is the file structure ok?
+  # Server
+  server:
+    build: ./server/.
+    container_name: server
+    image: server:v1.1
+    environment:  
+      - TCP_PORT=65432
+      - MQTT_BROKER=broker
+      - MQTT_TOPIC=testmqttserver
+      - MQTT_PORT=1883
+    ports:
+      - 65432:65432
+    command: 
+      - sh 
+      - -c 
+      - |
+        chmod +x ./wait-for
+        ./wait-for broker:1883 -- echo "Test connection to broker"
+        python3 main.py
+    networks:
+      - my_network    
+    depends_on:
+      - broker
+    links:
+      - broker   

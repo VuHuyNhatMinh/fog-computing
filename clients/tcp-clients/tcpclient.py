@@ -10,8 +10,8 @@ def send(sender, msg):
     sender.send(mes)
 
 if __name__ == "__main__":
-    # host = os.environ.get("TCP_HOST", socket.gethostbyname(socket.gethostname())) 
-    host = ''
+    # Local Server
+    host = os.environ.get("TCP_HOST", socket.gethostbyname(socket.gethostname())) 
     port = os.environ.get("TCP_PORT", 65432)
 
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

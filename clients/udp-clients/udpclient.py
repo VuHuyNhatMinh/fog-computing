@@ -3,7 +3,8 @@ import os
 import time
 
 if __name__ == "__main__":
-    host = os.environ.get("TCP_HOST", socket.gethostbyname(socket.gethostname())) 
+    # Local Server
+    host = os.environ.get("TCP_HOST", socket.gethostbyname(socket.gethostname()))
     port = os.environ.get("TCP_PORT", 65432)
 
     client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

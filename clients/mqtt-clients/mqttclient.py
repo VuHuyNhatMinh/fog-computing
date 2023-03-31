@@ -15,7 +15,8 @@ def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
 
 if __name__ == "__main__":
-    broker = os.environ.get("MQTT_BROKER", "broker.mqttdashboard.com")
+    # Public Broker
+    broker = os.environ.get("MQTT_BROKER", "localhost")
     topic = os.environ.get("MQTT_TOPIC", "testmqttserver")
     port = os.environ.get("MQTT_PORT", 1883)
 

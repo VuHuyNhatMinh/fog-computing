@@ -5,16 +5,33 @@ services:
   mqtt-clients:
     build: ./mqtt-clients/.
     container_name: mqtt-clients
+    image: minhvhn/mqtt-clients:v1.3
     network_mode: "host"
+    ports:
+      - 1883:1883
+    environment:
+      - MQTT_BROKER=44.202.33.79
+      - MQTT_TOPIC=testmqttserver
+      - MQTT_PORT=1883
 
   # tcp clients
   tcp-clients:
     build: ./tcp-clients/.
     container_name: tcp-clients
+    image: minhvhn/tcp-clients:v1.3
     network_mode: "host"
+    ports:
+      - 65432:65432
+    environment:
+      - TCP_HOST=44.202.33.79
+      - TCP_PORT=65432
 
   # udp clients
   udp-clients:
     build: ./udp-clients/.
     container_name: udp-clients
+    # image: udp-clients:v1.2
+    image: minhvhn/udp-clients:v1.2
     network_mode: "host"
+    ports:
+      - 65432:65432

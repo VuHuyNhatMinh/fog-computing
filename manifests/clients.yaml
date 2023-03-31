@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mqtt-client
+  labels:
+    app: mqtt-client
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: mqtt-client
+  template:
+    metadata:
+      labels:
+        app: mqtt-client
+    spec:
+      containers:
+      - name: mqtt-client
+        image: minhvhn/mqtt-clients:v1.2
+        ports:
+        - containerPort: 1883
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tcp-client
+  labels:
+    app: tcp-client
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: tcp-client
+  template:
+    metadata:
+      labels:
+        app: tcp-client
+    spec:
+      containers:
+      - name: tcp-client
+        image: minhvhn/tcp-clients:v1.2
+        ports:
+        - containerPort: 65432
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: udp-client
+  labels:
+    app: udp-client
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: udp-client
+  template:
+    metadata:
+      labels:
+        app: udp-client
+    spec:
+      containers:
+      - name: udp-client
+        image: minhvhn/udp-clients:v1.2
+        ports:
+        - containerPort: 65432
+
+
