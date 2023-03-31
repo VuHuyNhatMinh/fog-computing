@@ -10,7 +10,7 @@ services:
     ports:
       - 1883:1883
     environment:
-      - MQTT_BROKER=44.202.33.79
+      - MQTT_BROKER=44.201.191.137
       - MQTT_TOPIC=testmqttserver
       - MQTT_PORT=1883
 
@@ -23,7 +23,7 @@ services:
     ports:
       - 65432:65432
     environment:
-      - TCP_HOST=44.202.33.79
+      - TCP_HOST=44.201.191.137
       - TCP_PORT=65432
 
   # udp clients
