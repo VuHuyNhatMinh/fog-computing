@@ -11,9 +11,9 @@ def send(sender, msg):
 
 if __name__ == "__main__":
     # Local Server
-    host = os.environ.get("TCP_HOST", socket.gethostbyname(socket.gethostname())) 
-    # host = "44.201.191.137"
-    port = os.environ.get("TCP_PORT", 65432)
+    # host = os.environ.get("TCP_HOST", socket.gethostbyname(socket.gethostname())) 
+    host = "44.201.191.137"
+    port = int(os.environ.get("TCP_PORT", 65432))
 
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect((host, port))

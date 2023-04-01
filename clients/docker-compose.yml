@@ -31,3 +31,6 @@ services:
     image: minhvhn/udp-clients:v1.2
     ports:
       - 65432:65432
+    environment:
+      - TCP_HOST=44.201.191.137
+      - TCP_PORT=65432

@@ -16,7 +16,7 @@ def on_message(client, userdata, msg):
 
 if __name__ == "__main__":
     # Public Broker
-    broker = os.environ.get("MQTT_BROKER", "localhost")
+    broker = os.environ.get("MQTT_BROKER", "44.201.191.137")
     topic = os.environ.get("MQTT_TOPIC", "testmqttserver")
     port = os.environ.get("MQTT_PORT", 1883)
 

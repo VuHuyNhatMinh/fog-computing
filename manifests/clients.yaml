@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mqtt-client
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
       app: mqtt-client
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mqtt-client
-        image: minhvhn/mqtt-clients:v1.2
+        image: minhvhn/mqtt-clients:v1.0
         ports:
         - containerPort: 1883
 ---
@@ -27,7 +27,7 @@ metadata:
   labels:
     app: tcp-client
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
       app: tcp-client
@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
       - name: tcp-client
-        image: minhvhn/tcp-clients:v1.2
+        image: minhvhn/tcp-clients:v1.0
         ports:
         - containerPort: 65432
 ---
@@ -49,7 +49,7 @@ metadata:
   labels:
     app: udp-client
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
       app: udp-client
@@ -60,7 +60,7 @@ spec:
     spec:
       containers:
       - name: udp-client
-        image: minhvhn/udp-clients:v1.2
+        image: minhvhn/udp-clients:v1.0
         ports:
         - containerPort: 65432
 
