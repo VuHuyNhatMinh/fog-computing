@@ -32,7 +32,7 @@ def start_MQTT_server(broker, topic, port):
 def main():
     host = os.environ.get("TCP_HOST", socket.gethostbyname(socket.gethostname()))
     tcp_port = os.environ.get("TCP_PORT", 65432)
-    broker = os.environ.get("MQTT_BROKER", "broker.mqttdashboard.com")
+    broker = os.environ.get("MQTT_BROKER", "localhost")
     topic = os.environ.get("MQTT_TOPIC", "testmqttserver")
     mqtt_port = os.environ.get("MQTT_PORT", 1883)
 
