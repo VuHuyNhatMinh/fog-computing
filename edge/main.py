@@ -6,7 +6,11 @@ from Compression import Compress
 
 BASE_PATH = os.path.dirname(os.path.realpath(__file__))
 folderName = '/Contents'
+# Developed url
 url = 'http://localhost:8080/api/data'
+
+# Deployed url
+# url = 'http://44.203.145.174:8080/api/data'
 headers = {'Accept': 'application/json',
            'Content-Type': 'application/json'}
 
@@ -41,7 +45,7 @@ def createMessage(path, file):
     content = str(content_compressed)
     msg['contentStr'] = content
 
-    msg['timeSent'] = time.time()
+    msg['timeSent'] = time.time() * 10e3
 
     return msg
 
