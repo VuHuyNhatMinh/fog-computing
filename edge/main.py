@@ -45,7 +45,7 @@ def createMessage(path, file):
     content = str(content_compressed)
     msg['contentStr'] = content
 
-    msg['timeSent'] = time.time() * 10e3
+    msg['timeSent'] = time.time() * 10e2
 
     return msg
 
