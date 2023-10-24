@@ -1,4 +1,7 @@
 version: '3.8'
+# TODO: Should we use this? Yes
+# Client: send random-length message
+# Server: accept message and insert into database
 
 services:
   # mqtt clients

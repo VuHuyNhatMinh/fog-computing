@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  # Mosquitto broker
+  broker:
+    image: eclipse-mosquitto:latest
+    restart: always
+    volumes:
+      - ./broker/config:/mosquitto/config
+      - ./broker/data:/mosquitto/data
+      - ./broker/log:/mosquitto/log    
+    ports:
+      - 1883:1883
+      - 9001:9001
+    container_name: broker
+
+  database:
+    image: 'postgres:latest'
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: ethan # The PostgreSQL user (useful to connect to the database)
+      POSTGRES_PASSWORD: password # The PostgreSQL password (useful to connect to the database)
+      POSTGRES_DB: default_database # The PostgreSQL default database (automatically created at first launch)
+  

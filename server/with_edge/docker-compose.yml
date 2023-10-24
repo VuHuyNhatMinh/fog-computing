@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  database:
+    image: 'postgres:16.0-alpine'
+    restart: always
+    container_name: database
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=1
+      - POSTGRES_USER=myserver
+      - POSTGRES_DB=DataLogger
+    volumes:
+      - /data:/var/lib/postgresql/data
+
+  server:
+    build: .
+    # restart: always
+    container_name: server
+    ports:   
+      - 8080:8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/DataLogger
+      - SPRING_DATASOURCE_USERNAME=myserver
+      - SPRING_DATASOURCE_PASSWORD=1
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - database
